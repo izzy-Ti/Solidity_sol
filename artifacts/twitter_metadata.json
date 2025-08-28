@@ -268,11 +268,11 @@
 	},
 	"sources": {
 		"contracts/twitter.sol": {
-			"keccak256": "0x323363bf31cafe6929232fd91389e3fa5d622025e5e16a1829a0ceb089058f7c",
+			"keccak256": "0xc3aa084253157852df2e6487382a732e912097220343006dfa6b91f63f7fe0d6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a06ea9ceafdb5a1c73d5d7ccb7c2e0c2306f8d5c892e7d02afdb7d291e3cd37c",
-				"dweb:/ipfs/QmVvveCRL3soLrw6BpZANqWZ29ZMuSK66SXpfQPnXAibPk"
+				"bzz-raw://03f1f6eea3ee0c26553d5ea8534122fdde1af37b6787a99e9d26f3aa4833a284",
+				"dweb:/ipfs/QmfCGF7DD1UpXxC6fopcae89sC8TdSuAcxo6GSArzim5rK"
 			]
 		}
 	},
