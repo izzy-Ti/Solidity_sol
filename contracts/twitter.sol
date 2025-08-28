@@ -4,31 +4,33 @@
 pragma solidity ^0.8.18;
 
 
-contract twitter{
-    struct tweet{
-        address author;
-        string content;
-        uint timeStamp;
-        uint likes;
+contract modify{
+        address public owner;
+        mapping(address => uint) public balance;
+        bool public paused;
+    constructor(){
+        owner = msg.sender;
+        balance[owner] = 1000;
+        paused = false;
     }
-
-    mapping(address => tweet[]) public tweets;
-    function createtweets (string memory _tweet) public {
-
-        require(bytes(_tweet).length <= 200, 'The tweet is so long');
-        tweet memory newTweet = tweet({
-            author: msg.sender,
-            content: _tweet,
-            timeStamp: block.timestamp,
-            likes: 0
-        });
-        tweets[msg.sender].push(newTweet);
+    modifier onlyOwner{
+        require(msg.sender == owner, 'the user is not the owner');
+        _;
     }
-
-    function gettweet(address _owner, uint _i) public view returns( tweet memory){
-        return tweets[_owner][_i];
+    modifier isPaused{
+        require(paused == false, 'The system is paused');
+        _;
     }
-    function getAlltweets(address _owner) public view returns( tweet[] memory){
-        return tweets[_owner];
+    function pause() public onlyOwner {
+        paused = true;
+    }
+    function unpause() public onlyOwner {
+        paused = false;
+    }
+    function transaction(address to, uint amount) public isPaused {
+        require(balance[msg.sender] <= 500, 'Your balance is less than minimum');
+
+        balance[msg.sender] -= amount;
+        balance[to] += amount; 
     }
 }
